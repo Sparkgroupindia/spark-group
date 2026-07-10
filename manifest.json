@@ -2,14 +2,27 @@
   "name": "Spark Group",
   "short_name": "Spark",
   "description": "Spark Group Digital Directory",
-  "start_url": "./index.html",
+
+  "start_url": "/spark-group/",
+
+  "scope": "/spark-group/",
+
   "display": "standalone",
+
   "background_color": "#ffffff",
+
   "theme_color": "#ff7a00",
+
   "orientation": "portrait",
+
   "icons": [
     {
-      "src": "https://drive.google.com/thumbnail?id=14cDI67g-vFxV9qWRLcYUGBl9TPqh_ozW&sz=w512",
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
