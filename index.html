@@ -1,38 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
-<link rel="manifest" href="manifest.json">
+<meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<meta name="theme-color" content="#ff7a00">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="apple-mobile-web-app-title" content="Spark Group">
+
+<link rel="manifest" href="manifest.json">
 
 <style>
 
 *{
 box-sizing:border-box;
-}
-
-html,
-body{
 margin:0;
 padding:0;
+}
+
+html,body{
 width:100%;
 height:100%;
 overflow:hidden;
+background:#fff;
 }
 
 iframe{
-
 position:fixed;
 top:0;
 left:0;
+width:100%;
+height:100%;
+border:none;
+}
 
-width:100vw;
-height:100vh;
+#installBtn{
 
-border:0;
+display:none;
 
-display:block;
+position:fixed;
+
+bottom:20px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:#ff7a00;
+
+color:#fff;
+
+border:none;
+
+padding:14px 28px;
+
+font-size:17px;
+
+border-radius:30px;
+
+cursor:pointer;
+
+z-index:999999;
+
+box-shadow:0 6px 18px rgba(0,0,0,.25);
 
 }
 
@@ -42,23 +79,57 @@ display:block;
 
 <body>
 
-<iframe src="
-https://script.google.com/macros/s/AKfycbz7Rx5C_TvMphuerz6bJqigg1EmSF17T_rwpBIvomo6YsG1RnLf1OyltorQ-Y_Piaxp/exec">
-</iframe>
+<iframe src="https://script.google.com/macros/s/AKfycbz7Rx5C_TvMphuerz6bJqigg1EmSF17T_rwpBIvomo6YsG1RnLf1OyltorQ-Y_Piaxp/exec"></iframe>
 
+<button id="installBtn" onclick="installApp()">
+Install App
+</button>
 
 <script>
 
 if("serviceWorker" in navigator){
 
-navigator.serviceWorker.register(
-"service-worker.js"
-);
+window.addEventListener("load",()=>{
+
+navigator.serviceWorker.register("service-worker.js");
+
+});
 
 }
 
-</script>
+let deferredPrompt;
 
+window.addEventListener("beforeinstallprompt",(e)=>{
+
+e.preventDefault();
+
+deferredPrompt=e;
+
+document.getElementById("installBtn").style.display="block";
+
+});
+
+async function installApp(){
+
+if(!deferredPrompt) return;
+
+deferredPrompt.prompt();
+
+await deferredPrompt.userChoice;
+
+deferredPrompt=null;
+
+document.getElementById("installBtn").style.display="none";
+
+}
+
+window.addEventListener("appinstalled",()=>{
+
+document.getElementById("installBtn").style.display="none";
+
+});
+
+</script>
 
 </body>
 </html>
