@@ -2,9 +2,16 @@
 <html>
 <head>
 
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spark Group</title>
+
 <link rel="manifest" href="manifest.json">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#1a73e8">
+
 
 <style>
 
@@ -12,18 +19,103 @@
 box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
+
 margin:0;
 padding:0;
+
 width:100%;
 height:100%;
+
 overflow:hidden;
+
+font-family:Arial,sans-serif;
+
 }
+
+
+/* SPLASH */
+
+#splash{
+
+position:fixed;
+
+inset:0;
+
+background:#ffffff;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+z-index:9999;
+
+}
+
+
+#splash img{
+
+width:110px;
+
+height:110px;
+
+border-radius:20px;
+
+animation:pulse 1.5s infinite;
+
+}
+
+
+#splash h2{
+
+margin-top:20px;
+
+font-size:24px;
+
+color:#1a73e8;
+
+}
+
+
+#loading{
+
+color:#777;
+
+margin-top:10px;
+
+font-size:14px;
+
+}
+
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+
+
+/* APP */
 
 iframe{
 
 position:fixed;
+
 top:0;
 left:0;
 
@@ -36,29 +128,73 @@ display:block;
 
 }
 
+
 </style>
 
 </head>
 
+
 <body>
 
-<iframe src="
-https://script.google.com/macros/s/AKfycbz7Rx5C_TvMphuerz6bJqigg1EmSF17T_rwpBIvomo6YsG1RnLf1OyltorQ-Y_Piaxp/exec">
+
+<div id="splash">
+
+
+<img src="https://drive.google.com/thumbnail?id=14cDI67g-vFxV9qWRLcYUGBl9TPqh_ozW&sz=w500">
+
+
+<h2>
+Spark Group
+</h2>
+
+
+<div id="loading">
+Loading...
+</div>
+
+
+</div>
+
+
+
+<iframe
+
+src="https://script.google.com/macros/s/AKfycbz7Rx5C_TvMphuerz6bJqigg1EmSF17T_rwpBIvomo6YsG1RnLf1OyltorQ-Y_Piaxp/exec"
+
+allow="fullscreen">
+
 </iframe>
+
 
 
 <script>
 
+
+window.onload=function(){
+
+
+setTimeout(function(){
+
+document.getElementById("splash").style.display="none";
+
+
+},1800);
+
+
+};
+
+
+
 if("serviceWorker" in navigator){
 
-navigator.serviceWorker.register(
-"service-worker.js"
-);
+navigator.serviceWorker.register("service-worker.js");
 
 }
+
 
 </script>
 
 
 </body>
+
 </html>
