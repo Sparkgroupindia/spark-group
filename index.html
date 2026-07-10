@@ -2,40 +2,21 @@
 <html>
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Spark Group</title>
-
 <link rel="manifest" href="manifest.json">
 
-<meta name="theme-color" content="#ff7a00">
+<meta name="theme-color" content="#ff6600">
 
 <style>
-body{
+html,body{
 margin:0;
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-font-family:Arial;
-background:#fff;
+height:100%;
+overflow:hidden;
 }
 
-.loader{
-text-align:center;
-}
-
-img{
-width:120px;
-}
-
-button{
-padding:12px 25px;
+iframe{
+width:100%;
+height:100%;
 border:0;
-border-radius:8px;
-background:#ff7a00;
-color:white;
-font-weight:bold;
 }
 </style>
 
@@ -43,26 +24,18 @@ font-weight:bold;
 
 <body>
 
-<div class="loader">
-
-<img src="https://drive.google.com/thumbnail?id=14cDI67g-vFxV9qWRLcYUGBl9TPqh_ozW&sz=w500">
-
-<h2>Spark Group</h2>
-
-<p>Opening Directory...</p>
-
-</div>
+<iframe src="
+https://script.google.com/macros/s/AKfycbz7Rx5C_TvMphuerz6bJqigg1EmSF17T_rwpBIvomo6YsG1RnLf1OyltorQ-Y_Piaxp/exec">
+</iframe>
 
 
 <script>
 
-window.location.href=
-"https://script.google.com/macros/s/AKfycbz7Rx5C_TvMphuerz6bJqigg1EmSF17T_rwpBIvomo6YsG1RnLf1OyltorQ-Y_Piaxp/exec";
-
-
 if("serviceWorker" in navigator){
 
-navigator.serviceWorker.register("sw.js");
+navigator.serviceWorker.register(
+"service-worker.js"
+);
 
 }
 
