@@ -1,25 +1,51 @@
-const CACHE_NAME = "spark-group-v1";
+const CACHE_NAME="spark-group-v1";
 
-self.addEventListener("install", function(event){
+const urlsToCache=[
+
+"./",
+
+"./index.html",
+
+"./manifest.json"
+
+];
+
+self.addEventListener("install",(event)=>{
+
+event.waitUntil(
+
+caches.open(CACHE_NAME)
+
+.then((cache)=>cache.addAll(urlsToCache))
+
+);
 
 self.skipWaiting();
 
 });
 
-
-self.addEventListener("activate", function(event){
+self.addEventListener("activate",(event)=>{
 
 event.waitUntil(
+
 clients.claim()
+
 );
 
 });
 
-
-self.addEventListener("fetch", function(event){
+self.addEventListener("fetch",(event)=>{
 
 event.respondWith(
-fetch(event.request)
+
+caches.match(event.request)
+
+.then((response)=>{
+
+return response || fetch(event.request);
+
+})
+
 );
 
 });
