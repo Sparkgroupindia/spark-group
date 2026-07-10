@@ -1,4 +1,4 @@
-const CACHE_NAME = "spark-group-v1";
+const CACHE_NAME = "spark-cache-v1";
 
 self.addEventListener("install", function(event){
 
