@@ -45,12 +45,18 @@ border:none;
 
 position:fixed;
 inset:0;
-background:#fff;
 
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+
+overflow:hidden;
+
+background:
+radial-gradient(circle at 20% 20%,rgba(255,122,0,.08),transparent 40%),
+radial-gradient(circle at 80% 80%,rgba(255,122,0,.10),transparent 35%),
+linear-gradient(#ffffff,#fdfdfd);
 
 z-index:999999;
 
@@ -110,6 +116,82 @@ box-shadow:0 6px 18px rgba(0,0,0,.25);
 
 }
 
+#splash::before{
+
+content:"";
+
+position:absolute;
+
+left:-20%;
+
+bottom:-140px;
+
+width:140%;
+
+height:280px;
+
+background:rgba(255,122,0,.05);
+
+border-radius:45%;
+
+animation:wave 5s linear infinite;
+
+}
+
+#splash::after{
+
+content:"";
+
+position:absolute;
+
+left:-10%;
+
+bottom:-120px;
+
+width:120%;
+
+height:220px;
+
+background:rgba(255,122,0,.08);
+
+border-radius:45%;
+
+animation:wave2 7s linear infinite;
+
+}
+
+@keyframes wave{
+
+0%{
+transform:translateX(0);
+}
+
+50%{
+transform:translateX(40px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}
+
+@keyframes wave2{
+
+0%{
+transform:translateX(0);
+}
+
+50%{
+transform:translateX(-35px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}  
+
 </style>
 
 </head>
@@ -122,15 +204,42 @@ box-shadow:0 6px 18px rgba(0,0,0,.25);
 src="logo.png"
 style="width:120px;margin-bottom:25px;">
 
-<div class="loader"></div>
+<div style="
+margin-top:20px;
+font-size:28px;
+font-weight:bold;
+color:#ff7a00;
+font-family:Arial;
+">
+Welcome
+</div>
+
+<div style="
+margin-top:8px;
+font-size:18px;
+color:#444;
+font-family:Arial;
+">
+to
+</div>
+
+<div style="
+margin-top:4px;
+font-size:34px;
+font-weight:700;
+color:#222;
+font-family:Arial;
+letter-spacing:1px;
+">
+Spark Group
+</div>
 
 <div style="
 margin-top:18px;
-font-size:16px;
-color:#666;
-font-family:Arial;
+font-size:14px;
+color:#888;
 ">
-Loading...
+Please wait...
 </div>
 
 </div>
