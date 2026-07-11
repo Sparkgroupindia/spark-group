@@ -1,4 +1,4 @@
-const CACHE_NAME = "spark-group-v2";
+const CACHE_NAME = "spark-group-v3";
 
 const FILES = [
   "./",
