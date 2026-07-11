@@ -42,35 +42,20 @@ border:none;
 }
 
 #installBtn{
-
 display:none;
-
 position:fixed;
-
 bottom:20px;
-
 left:50%;
-
 transform:translateX(-50%);
-
 background:#ff7a00;
-
 color:#fff;
-
 border:none;
-
 padding:14px 28px;
-
 font-size:17px;
-
 border-radius:30px;
-
 cursor:pointer;
-
 z-index:999999;
-
 box-shadow:0 6px 18px rgba(0,0,0,.25);
-
 }
 
 </style>
@@ -87,11 +72,13 @@ Install App
 
 <script>
 
-if("serviceWorker" in navigator){
+if ("serviceWorker" in navigator){
 
-window.addEventListener("load",()=>{
+window.addEventListener("load",async()=>{
 
-navigator.serviceWorker.register("service-worker.js");
+const reg=await navigator.serviceWorker.register("sw.js");
+
+reg.update();
 
 });
 
